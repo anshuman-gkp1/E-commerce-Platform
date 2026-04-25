@@ -1,66 +1,108 @@
-# E-commerce Platform
+# 🛒 E-commerce Platform
 
-A full-stack e-commerce application with a React frontend and an Express + MongoDB backend.
-It supports user authentication, product browsing, cart management, checkout, and order tracking, with admin controls for product and order management.
+A full-stack **e-commerce web application** with a React frontend and an Express + MongoDB backend. Supports user authentication, product browsing, cart management, checkout, and order tracking — plus an admin dashboard for product and order management.
 
-## What this project includes
+## ✨ Features
 
-- Customer authentication (register, login, profile)
-- Product listing, search, filtering, and product detail pages
-- Shopping cart operations (add, remove, update quantity, clear cart)
-- Order creation and order history
-- Admin capabilities for product CRUD and order status updates
-- REST API architecture with protected routes and JWT-based authorization
+### 👤 Customer
+- Register, login, and manage profile
+- Browse, search, and filter products
+- Product detail pages
+- Add/remove items from cart, update quantities
+- Place orders and view order history
 
-## Tech stack
+### 🛠️ Admin
+- Create, update, and delete products
+- View all orders and update order status
 
-- Frontend: React, Vite, Tailwind CSS, Axios, React Router, Zustand
-- Backend: Node.js, Express, MongoDB, Mongoose, JWT, bcrypt, Joi
-- Tooling: ESLint, Nodemon
+### 🔒 Security
+- JWT-based authentication
+- Protected routes on both frontend and backend
+- Password hashing with bcrypt
+- Secrets excluded from version control via `.gitignore`
 
-## Project structure
+## 🛠️ Tech Stack
 
-- client: React frontend app
-- server: Express API and database layer
+| Layer | Technology |
+|-------|------------|
+| Frontend | React, Vite, Tailwind CSS, React Router, Zustand, Axios |
+| Backend | Node.js, Express, MongoDB, Mongoose |
+| Auth | JWT, bcrypt |
+| Validation | Joi |
+| Tooling | ESLint, Nodemon |
 
-## Quick start
+## 📁 Project Structure
 
-1. Clone the repository
-2. Install dependencies in both client and server folders
-3. Configure environment variables
-4. Start backend and frontend development servers
+```
+E-commerce-Platform/
+├── client/          # React frontend (Vite + Tailwind)
+│   └── src/
+└── server/          # Express REST API + MongoDB
+    ├── routes/
+    ├── models/
+    ├── middleware/
+    └── controllers/
+```
 
-## Environment setup
+## ⚙️ Getting Started
 
-Create local environment files for your machine and keep secrets private.
+### Prerequisites
+- Node.js 18+
+- MongoDB (local or Atlas)
 
-Backend (example values):
+### 1. Clone the repository
+```bash
+git clone https://github.com/anshuman-gkp1/E-commerce-Platform.git
+cd E-commerce-Platform
+```
 
-- NODE_ENV=development
-- PORT=5000
-- MONGO_URI=your_mongodb_connection_string
-- JWT_SECRET=your_jwt_secret
-- STRIPE_SECRET_KEY=your_stripe_secret_key
+### 2. Setup Backend
+```bash
+cd server
+npm install
+```
 
-Frontend (example values):
+Create a `.env` file in `/server`:
+```env
+NODE_ENV=development
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+STRIPE_SECRET_KEY=your_stripe_secret_key
+```
 
-- VITE_API_URL=http://localhost:5000/api
+```bash
+npm run dev
+```
 
-## API highlights
+### 3. Setup Frontend
+```bash
+cd client
+npm install
+```
 
-- Auth: register, login, current user, update address
-- Products: list, detail, create, update, delete
-- Cart: get, add, remove, update, clear
-- Orders: create, user orders, all orders (admin), update status (admin)
+Create a `.env` file in `/client`:
+```env
+VITE_API_URL=http://localhost:5000/api
+```
 
-## Security note
+```bash
+npm run dev
+```
 
-Sensitive files are excluded from version control through gitignore rules, including local environment files.
-Use example env files for sharing configuration format, and keep real credentials only in local env files.
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-## Future improvements
+## 🔌 API Endpoints
 
-- Payment gateway integration hardening
+| Resource | Endpoints |
+|----------|-----------|
+| Auth | `POST /api/auth/register`, `POST /api/auth/login` |
+| Products | `GET /api/products`, `POST /api/products` (admin) |
+| Cart | `GET /api/cart`, `POST /api/cart/add`, `DELETE /api/cart/:id` |
+| Orders | `POST /api/orders`, `GET /api/orders/my`, `GET /api/orders` (admin) |
+
+## 🔮 Future Improvements
+- Payment gateway integration (Stripe)
 - Unit and integration tests
-- CI pipeline and deployment configuration
-- Role-based audit logging and monitoring
+- CI/CD pipeline and cloud deployment
+- Role-based audit logging
